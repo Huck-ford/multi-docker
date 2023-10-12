@@ -14,3 +14,11 @@ after_success:
   - docker build -t huck-ford/multi-nginx ./nginx
   - docker build -t huck-ford/multi-server ./server
   - docker build -t huck-ford/multi-worker ./worker
+
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take images and push them to docker hub
+  - docker push huck-ford/multi-client
+  - docker push huck-ford/multi-nginx
+  - docker push huck-ford/multi-server
+  - docker push huck-ford/multi-worker
