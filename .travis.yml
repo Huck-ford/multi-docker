@@ -10,15 +10,15 @@ script:
   - docker run -e CI=true huck-ford/react-test npm test
 
 after_success:
-  - docker build -t huck-ford/multi-client ./client
-  - docker build -t huck-ford/multi-nginx ./nginx
-  - docker build -t huck-ford/multi-server ./server
-  - docker build -t huck-ford/multi-worker ./worker
+  - docker build -t huckford/multi-client ./client
+  - docker build -t huckford/multi-nginx ./nginx
+  - docker build -t huckford/multi-server ./server
+  - docker build -t huckford/multi-worker ./worker
 
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take images and push them to docker hub
-  - docker push huck-ford/multi-client
-  - docker push huck-ford/multi-nginx
-  - docker push huck-ford/multi-server
-  - docker push huck-ford/multi-worker
+  - docker push huckford/multi-client
+  - docker push huckford/multi-nginx
+  - docker push huckford/multi-server
+  - docker push huckford/multi-worker
