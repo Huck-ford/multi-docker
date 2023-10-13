@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVerion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "huckford/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "huckford/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "wokrer",
+            "image": "huckford/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "huckford/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["clien", "server"]
+
+        }
+    ]
+}
